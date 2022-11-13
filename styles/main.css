@@ -13,13 +13,13 @@
   border: 2px solid var(--ming);
   padding: 0.5rem;
   transition: background-color 300ms;
-  border-radius: 0.4rem;
+  /* border-radius: 0.4rem; */
   text-decoration: none;
   font-size: 0.8rem;
   font-weight: bold;
-  color: #333;
   margin-top: 2rem;
   cursor: pointer;
+  display: inline-block;
 }
 
 .button:hover {
@@ -32,6 +32,8 @@
   padding: 2rem;
   margin: 0;
   text-align: center;
+  display: flex;
+  position: relative;
 }
 
 .card img {
@@ -44,21 +46,27 @@
   display: flex;
   padding: 0.5rem;
   gap: 1rem;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+  text-align: center;
 }
 
 .card {
-  flex: 1 2 0;
+  flex: 1 1 0;
   cursor: pointer;
-  border: 0.5px solid #444;
+  /* border: 0.5px solid #444; */
   border-radius: 7px;
   transition: box-shadow 300ms ease-in-out;
-  color: #fff;
+  color: #ddd;
+}
+
+.card .text-wrapper {
+  padding: 1.5rem;
 }
 
 .card .image-wrapper {
   overflow: hidden;
+  border-radius: 7px;
 }
 
 .card img:hover {
@@ -67,19 +75,24 @@
 
 .card:hover,
 .card:focus {
-  box-shadow: inset -12.8em 0 0 0 var(--dark-navy),
-    inset 12.8em 0 0 0 var(--dark-navy);
+  box-shadow: inset -30em 0 0 0 var(--dark-navy),
+    inset 30em 0 0 0 var(--dark-navy);
+}
+
+.card .image-wrapper:hover {
+  filter: brightness(70%);
 }
 
 .hero h1,
 .hero p {
   margin: 0;
+  padding: 0;
   color: #eee;
 }
 
 .hero h1 {
   text-shadow: 2px 1px 3px rgba(23, 23, 23, 0.88);
-  font-size: clamp(2rem, 3vw, 5rem);
+  font-size: clamp(4rem, 4vw, 5rem);
 }
 
 .hero img {
@@ -90,21 +103,41 @@
   display: flex;
   position: relative;
   margin: 0;
+  align-self: stretch;
 }
 
 .hero .text-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.25rem;
   position: absolute;
   top: 100px;
   left: 200px;
 }
 
-h1 {
+.text-wrapper h1 {
+  text-shadow: 2px 1px 3px rgba(23, 23, 23, 0.88);
+  font-size: clamp(2rem, 3vw, 5rem);
+}
+
+.image-wrapper {
+  order: -1;
+}
+
+.panel h1 {
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
-  font-size: 4rem;
+  font-size: 3rem;
   color: var(--dark-navy);
   line-height: 3rem;
   /* margin-block-start: 2rem; */
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
 }
 
 h2 {
@@ -123,6 +156,8 @@ h3 {
 p {
   max-width: 70ch;
   padding: 0.5rem 0;
+  font-size: 1.25rem;
+  line-height: 2rem;
 }
 
 a {
@@ -131,30 +166,31 @@ a {
 }
 
 main {
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 0 1rem;
-  max-width: 50rem;
+  max-width: 90rem;
+  align-self: center;
 }
 
 body {
-  margin: 0;
+  /* margin: 0; */
   padding: 1px;
   font-family: "Open Sans", sans-serif;
   color: #333;
   line-height: 1.5rem;
   display: flex;
   flex-direction: column;
+  background-color: #ddd;
 }
 
-a[href] {
+/* a[href] {
   text-decoration: none;
   color: #333;
-}
+} */
 
 img {
   width: 100%;
-  height: auto;
-  /* max-width: 400px; */
+  height: 100%;
   display: block;
   object-fit: cover;
 }
@@ -167,7 +203,29 @@ svg {
   width: 200px;
 }
 
-nav,
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: black;
+  flex: 0 1 auto;
+  cursor: pointer;
+  font-style: bold;
+}
+
+nav a {
+  color: #888;
+}
+
+nav ul {
+  list-style-type: none;
+  /* margin: 0; */
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
 footer {
   padding-left: 1rem;
   display: flex;
@@ -180,20 +238,53 @@ footer {
   font-style: bold;
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 1rem;
+@media (min-width: 401px) {
+  .panel {
+    flex-direction: row;
+    gap: 2rem;
+    display: flex;
+  }
+
+  .panel h2 {
+    margin-top: 0;
+  }
+
+  .left {
+    order: -1;
+  }
+
+  .image-wrapper {
+    flex: 1 1 30%;
+    wrap: nowrap;
+    aspect-ratio: 1/1;
+  }
+
+  .text-wrapper {
+    flex: 1 1 70%;
+  }
+
+  .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex: 1 1 40%;
+  }
 }
 
-/* nav,
-footer {
-  background-color: var(--orange);
-  padding: 1.5rem;
-  color: #333;
-  font-style: bold;
-} */
+@media (min-width: 801px) {
+  .panel {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .cards {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  .card {
+    flex: 1 1 20%;
+  }
+}
