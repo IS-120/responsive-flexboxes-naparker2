@@ -1,4 +1,8 @@
 <!-- cSpell:enable  -->
+This website is about peacocks (actually peafowls). It is a fun way to learn more about our feathered friends. 
+
+
+
 
 # Responsive flexboxes
 
